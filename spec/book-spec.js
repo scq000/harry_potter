@@ -1,5 +1,7 @@
 'use strict';
 
+var Book = require('../src/book');
+
 describe('Book', function () {
 
     it('should have a title', function () {
