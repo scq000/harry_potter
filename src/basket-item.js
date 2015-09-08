@@ -1,3 +1,5 @@
+'use strict';
+
 var Book = require('./book');
 
 function BasketItem(title,count) {
