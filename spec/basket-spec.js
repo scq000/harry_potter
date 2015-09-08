@@ -23,9 +23,7 @@ describe('Basket', function () {
         });
 
         it('should increase the count if basketItem has existed', function () {
-
             basket.addBasketItem(new BasketItem('B', 2));
-
             var existedItem = _.find(basket.basketItems, function (item) {
                 return item.book.title === 'B';
             });
@@ -33,7 +31,6 @@ describe('Basket', function () {
             expect(existedItem.count).toBe(4);
         });
     });
-
 
     describe('#createBookSet()', function () {
 
@@ -58,46 +55,39 @@ describe('Basket', function () {
 
         it('should get no discount when buy one book', function () {
             basket.basketItems = [new BasketItem('A', 1)];
-
             expect(basket.getAmount()).toBe(8);
         });
 
         it('should get no discount when buy two same books', function () {
             basket.basketItems = [new BasketItem('A', 2)];
-
             expect(basket.getAmount()).toBe(16);
         });
 
         it('should get 5% discount when buy two different books', function () {
             basket.basketItems = [new BasketItem('A', 1), new BasketItem('B', 1)];
-
             expect(basket.getAmount()).toBe(15.2);
         });
 
         it('should get 10% discount when buy three different books', function () {
             basket.basketItems = [new BasketItem('A', 1), new BasketItem('B', 1), new BasketItem('C', 1)];
-
             expect(basket.getAmount()).toBe(21.6);
         });
 
         it('should get 20% discount when buy four different books', function () {
             basket.basketItems = [new BasketItem('A', 1), new BasketItem('B', 1), new BasketItem('C', 1),
                 new BasketItem('D', 1)];
-
             expect(basket.getAmount()).toBe(25.6);
         });
 
         it('should get 25% discount when buy five different books', function () {
             basket.basketItems = [new BasketItem('A', 1), new BasketItem('B', 1), new BasketItem('C', 1),
                 new BasketItem('D', 1), new BasketItem('E', 1)];
-
             expect(basket.getAmount()).toBe(30);
         });
 
         it('should get the biggest discount', function () {
             basket.basketItems = [new BasketItem('A', 2), new BasketItem('B', 2), new BasketItem('C', 2),
                 new BasketItem('D', 1), new BasketItem('E', 1)];
-
             expect(basket.getAmount()).toBe(51.2);
         });
     });

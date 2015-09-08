@@ -8,7 +8,6 @@ function Basket() {
 }
 
 Basket.prototype.addBasketItem = function (basketItem) {
-
     var existedItem = _.find(this.basketItems, function (item) {
         return item.book.title === basketItem.book.title;
     });
@@ -39,21 +38,16 @@ Basket.prototype.createBookSet = function () {
         return b.count - a.count;
     });
 
-    for (var i = 0, len = this.basketItems.length; i < len; i++) {
-
-        var restItems = this.basketItems.filter(function (item) {
-            return item.count > 0;
+    this.basketItems.forEach(function (basketItem, i, basketItems) {
+        var restItems = basketItems.filter(function (basketItem) {
+            return basketItem.count > 0;
         });
 
-        if (bookSet.length === 4 && restItems.length === 4) {
-            continue;
+        if (basketItem.count && (bookSet.length !== 4 || restItems.length !== 4)) {
+            bookSet.push(basketItem.book);
+            basketItem.count--;
         }
-
-        if (this.basketItems[i].count > 0) {
-            bookSet.push(this.basketItems[i].book);
-            this.basketItems[i].count--;
-        }
-    }
+    });
 
     return bookSet;
 };
