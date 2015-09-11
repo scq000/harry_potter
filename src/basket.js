@@ -43,7 +43,7 @@ Basket.prototype.createBookSet = function () {
             return basketItem.count > 0;
         });
 
-        if (basketItem.count && (bookSet.length !== 4 || restItems.length !== 4)) {
+        if (basketItem.count && (bookSet.length !== 4 || restItems.length !== 4)) {//总感觉这里有错误，反正给你写了一个通不过的测试用例
             bookSet.push(basketItem.book);
             basketItem.count--;
         }

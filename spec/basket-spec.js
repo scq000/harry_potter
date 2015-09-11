@@ -90,5 +90,12 @@ describe('Basket', function () {
                 new BasketItem('D', 1), new BasketItem('E', 1)];
             expect(basket.getAmount()).toBe(51.2);
         });
+
+        //下面这个测试跑不过
+        it('should get the biggest discount more than 8 books', function () {
+            basket.basketItems = [new BasketItem('A', 4), new BasketItem('B', 4), new BasketItem('C', 4),
+                new BasketItem('D', 3), new BasketItem('E', 1)];
+            expect(basket.getAmount()).toBe(16*(8*(1-0.2)));
+        });
     });
 });
