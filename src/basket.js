@@ -35,7 +35,7 @@ Basket.prototype.getAmount = function () {
         amount -= 0.4;
     }
 
-    return amount;
+    return Math.round(amount*100)/100;
 };
 
 Basket.prototype.createBookSet = function () {
