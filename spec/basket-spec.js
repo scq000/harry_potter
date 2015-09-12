@@ -101,5 +101,17 @@ describe('Basket', function () {
                 new BasketItem(d, 3), new BasketItem(e, 1)];
             expect(basket.getAmount()).toBe(102.4);
         });
+
+        it('should get the biggest discount more than 8 books', function () {
+            basket.basketItems = [new BasketItem(a, 4), new BasketItem(b, 4), new BasketItem(c, 4),
+                new BasketItem(d, 3), new BasketItem(e, 1)];
+            expect(basket.getAmount()).toBe(102.4);
+        });
+
+        it('should get the biggest discount more than 20 books', function () {
+            basket.basketItems = [new BasketItem(a, 5), new BasketItem(b, 4), new BasketItem(c, 4),
+                new BasketItem(d, 5), new BasketItem(e, 5)];
+            expect(basket.getAmount()).toBe(141.2);
+        });
     });
 });
