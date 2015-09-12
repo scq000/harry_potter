@@ -1,3 +1,14 @@
+# 解题思路(Solution Ideas)
+分为四个类
+Book类：基础类，带有书本的title和price
+BasketItem类：购物篮中的书本,带有数量信息
+Basket类: 　构造函数中有一个basketItems数组，用于存放购买的书籍信息
+ addBasketItem: 添加书本
+ createBookSet: 创建书本集合，从购物篮(basket)中取出书籍(basketItem)，将不同书籍进行打包，返回书本集合
+ getAmount: 获得总价，调用createBookSet方法，分组书籍，并利用计算器(calculator)计算价格，如果存在5-3组合就将总价减去４毛钱(4-4折扣的差价)
+Calculator类:　计算器，处理打折信息
+ getPrice: bookSet作为参数，根据折扣信息计算其总价
+
 # Requirement
 
 To try and encourage more sales of the 5 different Harry Potter books they sell, a bookshop has decided to offer discounts of multiple-book purchases.
