@@ -23,10 +23,17 @@ Basket.prototype.getAmount = function () {
     var amount = 0;
     var calculator = new Calculator();
 
+    var bookCounter = [];
+
     do {
         var bookSet = this.createBookSet();
         amount += calculator.getPrice(bookSet);
+        bookCounter.push(bookSet.length);
     } while (bookSet.length > 0);
+
+    if (_.include(bookCounter, 5) && _.include(bookCounter, 3)) {
+        amount -= 0.4;
+    }
 
     return amount;
 };
@@ -34,16 +41,8 @@ Basket.prototype.getAmount = function () {
 Basket.prototype.createBookSet = function () {
     var bookSet = [];
 
-    this.basketItems.sort(function (a, b) {
-        return b.count - a.count;
-    });
-
-    this.basketItems.forEach(function (basketItem, i, basketItems) {
-        var restItems = basketItems.filter(function (basketItem) {
-            return basketItem.count > 0;
-        });
-
-        if (basketItem.count && (bookSet.length !== 4 || restItems.length !== 4)) {
+    this.basketItems.forEach(function (basketItem) {
+        if (basketItem.count) {
             bookSet.push(basketItem.book);
             basketItem.count--;
         }
