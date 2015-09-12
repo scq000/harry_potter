@@ -2,8 +2,8 @@
 
 var Book = require('./book');
 
-function BasketItem(title, count) {
-    this.book = new Book(title);
+function BasketItem(book, count) {
+    this.book = book;
     this.count = count;
 }
 

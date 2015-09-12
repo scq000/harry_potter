@@ -6,7 +6,7 @@ var Book = require('../src/book');
 describe('BasketItem', function () {
 
     it('should have two property called book and count', function () {
-        var basketItem = new BasketItem('A', 3);
+        var basketItem = new BasketItem(new Book('A'), 3);
         var book = new Book('A');
 
         expect(basketItem.book).toEqual(book);
