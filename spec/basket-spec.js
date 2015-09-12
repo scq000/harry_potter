@@ -39,13 +39,13 @@ describe('Basket', function () {
             expect(basket.createBookSet()).toEqual([]);
         });
 
-        it('should return an optimal combination', function () {
+        it('should return a bookSet which includes different books', function () {
             basket.basketItems = [new BasketItem('A', 2), new BasketItem('B', 2),
                 new BasketItem('C', 2), new BasketItem('D', 1), new BasketItem('E', 1)
             ];
 
             var expectBookSet = [new Book('A'), new Book('B'), new Book('C'),
-                new Book('D')
+                new Book('D'), new Book('E')
             ];
             expect(basket.createBookSet()).toEqual(expectBookSet);
         });
@@ -89,6 +89,12 @@ describe('Basket', function () {
             basket.basketItems = [new BasketItem('A', 2), new BasketItem('B', 2), new BasketItem('C', 2),
                 new BasketItem('D', 1), new BasketItem('E', 1)];
             expect(basket.getAmount()).toBe(51.2);
+        });
+
+        it('should get the biggest discount more than 8 books', function () {
+            basket.basketItems = [new BasketItem('A', 4), new BasketItem('B', 4), new BasketItem('C', 4),
+                new BasketItem('D', 3), new BasketItem('E', 1)];
+            expect(basket.getAmount()).toBe(102.4);
         });
     });
 });
