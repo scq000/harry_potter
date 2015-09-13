@@ -7,15 +7,15 @@ function Basket() {
     this.basketItems = [];
 }
 
-Basket.prototype.addItem = function (basketItem) {
+Basket.prototype.addItem = function (newItem) {
     var existedItem = _.find(this.basketItems, function (item) {
-        return item.book.title === basketItem.book.title;
+        return item.book.title === newItem.book.title;
     });
 
     if (existedItem) {
-        existedItem.count += basketItem.count;
+        existedItem.count += newItem.count;
     } else {
-        this.basketItems.push(basketItem);
+        this.basketItems.push(newItem);
     }
 };
 
