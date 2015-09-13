@@ -22,15 +22,15 @@ describe('Basket', function () {
             new BasketItem(b, 2)];
     });
 
-    describe('#addBasketItem(basketItem)', function () {
+    describe('#addItem(basketItem)', function () {
 
         it('can add a new basketItem to basket', function () {
-            basket.addBasketItem(new BasketItem(d, 4));
+            basket.addItem(new BasketItem(d, 4));
             expect(basket.basketItems.length).toBe(3);
         });
 
         it('should increase the count if basketItem has existed', function () {
-            basket.addBasketItem(new BasketItem(b, 2));
+            basket.addItem(new BasketItem(b, 2));
             var existedItem = _.find(basket.basketItems, function (item) {
                 return item.book.title === 'B';
             });

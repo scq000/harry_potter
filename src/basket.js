@@ -7,7 +7,7 @@ function Basket() {
     this.basketItems = [];
 }
 
-Basket.prototype.addBasketItem = function (basketItem) {
+Basket.prototype.addItem = function (basketItem) {
     var existedItem = _.find(this.basketItems, function (item) {
         return item.book.title === basketItem.book.title;
     });
